@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  title: api-stream
+  description: API Gateway with a Google Cloud Functions backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+security:
+  - api_key_header: []
+  - api_key_query: []
+paths:
+  /{function}/{event}:
+    post:
+      summary: forward message on to cloud function
+      operationId: function-event
+      x-google-backend:
+        address: https://europe-west2-lee-doolan-api-demo.cloudfunctions.net/api-stream-to-pubsub
+      parameters:
+        - in: path
+          name: function
+          required: true
+          type: string
+          minimum: 1
+          description: The business function to direct to pubsub topic
+        - in: path
+          name: event
+          required: true
+          type: string
+          minimum: 1
+          description: The event id to place in pubsub message            
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Unauthorised access
+securityDefinitions:
+  api_key_header:
+    type: apiKey
+    name: x-api-key
+    in: header
+  api_key_query:
+    type: apiKey
+    name: key
+    in: query
