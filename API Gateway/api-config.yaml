@@ -16,7 +16,7 @@ paths:
       summary: forward message on to cloud function
       operationId: function-event
       x-google-backend:
-        address: https://europe-west2-lee-doolan-api-demo.cloudfunctions.net/api-stream-to-pubsub
+        address: https://<region>-<api-project>.cloudfunctions.net/<api-function>
       parameters:
         - in: path
           name: function
