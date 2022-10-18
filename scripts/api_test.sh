@@ -11,8 +11,7 @@ bold "${CMD_PREFIX}Create a test pull subscription to the pubsub topic ${TOPIC_I
 ${CMD_PREFIX}gcloud --project=${PROJECT_ID} pubsub subscriptions create ${TOPIC_ID}-test-sub --topic ${TOPIC_ID}
 
 bold "${CMD_PREFIX}Send test ${FUNCTION} event message."
-EVENT=test-product-event
-${CMD_PREFIX}curl -X POST https://${API_GATEWAY}/${FUNCTION}/${EVENT}?key=${API_KEY} \
+${CMD_PREFIX}curl -X POST https://${API_GATEWAY}/${FUNCTION}/test-${FUNCTION}-event?key=${API_KEY} \
 -H 'Content-Type: application/json' \
 -d '{"my_message":"Hello World!"}'
 
