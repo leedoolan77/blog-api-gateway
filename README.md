@@ -1,6 +1,6 @@
 # blog-api-gateway
 
-Commands to be run in this order:
+Commands to **BUILD** should be run in this order:
 
 - make auth - to authenticate with Google Cloud
 - make project - to make your API project and attach to your billing account
@@ -13,4 +13,22 @@ Commands to be run in this order:
 And you can test using:
 
 - make api_test - to creat a PubSub subscription to our topics, send a test essage, and test receipt
+
+--------------------------------------
+
+Commands to **DELETE** all objects should be run in this order:
+
+- make api_delete - to delete all API objects
+- make pubsub_delete - to delete the PubSub objects
+- make function_delete - to delete the Cloud Function
+
+Note, you will need to manually delete these objects:
+
+- API Key - from the APIs & Services/Credentials console page - https://console.cloud.google.com/apis/credentials
+- Project - if you created a specific project you should delete manually
+
+
+
+
+
 

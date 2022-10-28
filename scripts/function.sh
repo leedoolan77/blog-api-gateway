@@ -6,11 +6,12 @@ FUNCTION=$3
 REGION=$4
 CMD_PREFIX=$5
 
-bold "${CMD_PREFIX}Enable required services"
+bold "Enable required services"
 ${CMD_PREFIX}gcloud --project=${PROJECT_ID} services enable cloudfunctions.googleapis.com
 ${CMD_PREFIX}gcloud --project=${PROJECT_ID} services enable cloudbuild.googleapis.com
+sleep 5
 
-bold "${CMD_PREFIX}Create the function & give the IAM user invoke access"
+bold "Create the function & give the IAM user invoke access"
 ${CMD_PREFIX}gcloud --project=${PROJECT_ID} functions deploy ${FUNCTION} \
 --trigger-http --entry-point process --region ${REGION}  \
 --service-account ${IAM_ACCOUNT}@${PROJECT_ID}.iam.gserviceaccount.com \
